@@ -1,0 +1,60 @@
+EJE DE RAREZA: Mayor rareza indica habilidades más unicas (ej: ataques multiples o en area, defensas vs ataques unicos y que solo quitan una vida) 
+-Común 
+-Raro
+-Épico
+-Legendario
+-Mítico
+
+hacer barrars para cada valor y quitar o darle a uno, 
+COSTE
+
+Valores de cartastienen que sumar 0-9
+ATAQUE 0-3
+DEFENSA 0-3
+DURACION 0-3
+
+
+
+
+
+
+
+EJE DE TURNOS: INDICA SU gasto al ubicar y al atacar, Las cartas más abajo se usan por si solas en el turno, hay que optimizarlas, presionan y defienden a las 1ras.
+LAs cartas mas inutiles no aportan nada
+
+-TROPAS (si gasta al ubicacion y si gasta al ataque) gastan turno SIEMPRE QUE SE USAN pero son más poderosas y tienen mucha vida
+
+-ESTRUCTURA(si gasta al ubicacion y no gasta al ataque)  Cartas como tropas pero mas debiles, tienen una vida muy corta y atacan mucho pero muy debilmente.
+
+-TRAMPAS (No gasta al ubicacion y si gasta al ataque) son cartas estaticas que se se pueden ubicar en donde sea pero cuando atacan (un ataque debil) son un costo muy alto. su poder no esta en ser usadas como tal sino en ser  una amenaza para el enemigo de que si ubica las cartas de cierta manera puede ser atacado.
+
+-SOPORTE(No gasta al ubicacion y no gasta al ataque) estas cartas no gastan nada y justamente por eso casi no hacen nada en contra pero si a favor al permitir recuperar las cartas de tu terreno. como Curacion, refuerzo de ataque, Bonus de defensa
+-------
+-REYES, es la carta a defender si muere, pierdes el juego.
+
+
+
+EJE DE ATAQUES (muchas o una vs distancia o cuerpo a cuerpo): entre mas ataque y a mas diancia lo haga va a ser una carta que haga mucho
+muchos ataques y a distancia
+un ataque a distancia
+muchos ataques cuerpo a cuerpo
+un ataque y a cuerpo a cuerpo
+
+
+EJE DE DEFENSA (area o unica vs movil inmovil): entre mas movilidad y area cubran tiene se ser una  que tiene mucha vida pero no hace daño en defensa o  en ataque y; entre menos defienda y se menos se mueva va a tener mas daño atacando y menos vida.
+defiende areas y es movil
+defiende areas y es inmovil
+defiende nada y es movil
+defiende nada y es inmovil
+
+
+EJE DE VIDAS (mantiene salud en el turno o las pierde vs mantiene salud al usarse o la pierde): si no pierda salud en cada turno y no pierde vidas cuando ataca es una carta que ataca o defiende mas y fisicamente; si no mantiene salud y no mantiene vidas, es una carta que atacao defiende a distancia.
+
+si mantiene SALUD y no  pierde vidas: tiene un numero de vidas que pierde al ser atacado
+si mantiene SALUD Y pierde vidas: al atacar
+no mantiene SALUD por turno y si mantine vidas:
+no mantiene SALUD por turno y no mantine vidas: cuando ataca
+
+
+
+
