@@ -1,19 +1,107 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Batalla de Reinos</title>
-    <rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Batalla de Reinos</title>
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <h1>Batalla de Reinos</h1>
-    <div id="game-container">
-        <div id="player1" class="player-column"></div>
-        <div id="player2" class="player-column"></div>
-    </div>
-    <div id="hand-area"></div>
-    <div id="logs"></div>
+<body class="show-both">
+<div id="app">
 
-    <script src="script.js"></script>
+  <div id="start-screen">
+    <h1>Batalla de Reinos</h1>
+    <div class="subtitle">Juego de cartas estratégico</div>
+
+    <details class="mode-list" id="mode-list">
+      <summary id="mode-summary">Modo de Juego</summary>
+
+      <div class="mode-section-label">Modo</div>
+      <div class="mode-option" data-mode="ffa">Free For All</div>
+      <div class="mode-option locked" data-mode="race">Race <span class="lock-icon">🔒</span></div>
+      <div class="mode-option locked" data-mode="rush">Rush <span class="lock-icon">🔒</span></div>
+      <div class="mode-option locked" data-mode="2v2">2 vs 2 <span class="lock-icon">🔒</span></div>
+      <div class="mode-option locked" data-mode="tournament">Tournament <span class="lock-icon">🔒</span></div>
+
+      <div class="mode-section-label">Tamaño del Grid</div>
+      <div class="mode-option" data-grid="3x3">Grid 3 × 3 (Clásico)</div>
+      <div class="mode-option" data-grid="5x3">Grid 5 × 3 (Ancho)</div>
+    </details>
+
+    <div class="player-selector" id="player-selector">
+      <label>Cantidad de Jugadores</label>
+      <div class="player-count-buttons" id="player-count-buttons">
+        <button data-count="2" class="active">2</button>
+        <button data-count="3" disabled>3</button>
+        <button data-count="4" disabled>4</button>
+        <button data-count="5" disabled>5</button>
+        <button data-count="6" disabled>6</button>
+      </div>
+    </div>
+    <button id="start-btn" disabled>Iniciar Juego Local</button>
+    <div class="credits">
+      <p><strong>Créditos</strong></p>
+      <p>Diseño y desarrollo por <strong>Tu Nombre</strong></p>
+      <p>Inspirado en juegos de estrategia por turnos</p>
+      <p>Versión 0.1 — Prototipo</p>
+    </div>
+  </div>
+
+  <div id="game-view">
+    <div id="main-area">
+      <div id="game-header">
+        <div class="header-info">
+          <div class="game-title">Batalla de Reinos</div>
+          <div class="info-item">Modo<span id="hud-mode">Free For All</span></div>
+          <div class="info-item">Grid<span id="hud-grid">3×3</span></div>
+          <div class="info-item">Jugadores<span id="hud-players">2</span></div>
+          <div class="info-item">Turno<span id="hud-turn">1</span></div>
+        </div>
+        <div id="layer-controls">
+          <button data-layer="earth">Tierra</button>
+          <button data-layer="air">Aire</button>
+          <button data-layer="both" class="active">Ambos</button>
+        </div>
+      </div>
+
+      <div id="game-container">
+        <div class="side-panel" id="left-panel">
+          <h3>Reinos</h3>
+          <div id="kingdom-info"></div>
+        </div>
+        <div class="center-panel">
+          <div class="boards-wrapper" id="boards-wrapper">
+            <div id="player2-board" class="player-column"></div>
+            <div id="player1-board" class="player-column"></div>
+          </div>
+        </div>
+        <div class="side-panel" id="right-panel">
+          <h3>Detalle de Carta</h3>
+          <div id="card-info-content">
+            <div class="hint">Pasa el cursor sobre una carta del tablero para ver su información</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="hand-wrapper">
+        <button id="toggle-hand-btn" title="Minimizar/Expandir mano">▼</button>
+        <div id="hand-area"></div>
+      </div>
+    </div>
+    <div id="sidebar"><div id="logs"></div></div>
+  </div>
+
+  <footer id="app-footer">
+    <span class="footer-name">Batalla de Reinos</span>
+    <span>© 2026 — Todos los derechos reservados</span>
+    <a href="https://github.com/matrodriguezpa" target="_blank" rel="noopener">Creado por matrodriguezpa</a>
+  </footer>
+</div>
+
+<div id="stack-modal" class="stack-modal hidden">
+  <div class="stack-modal-header">Selecciona una carta</div>
+  <div id="stack-modal-cards" style="display:flex; gap:10px;"></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
