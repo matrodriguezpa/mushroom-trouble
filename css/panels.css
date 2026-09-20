@@ -1,0 +1,62 @@
+/* Paneles laterales: reinos y detalle de carta */
+
+.side-panel {
+    width: 200px;
+    flex-shrink: 0;
+    background: #16213e;
+    border: 2px solid #0f3460;
+    border-radius: 10px;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 100%;
+}
+
+.side-panel h3 {
+    margin: 0 0 4px 0;
+    font-size: 12px;
+    color: #e94560;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #0f3460;
+}
+
+.kingdom-info {
+    background: #0f0f1e;
+    border-radius: 6px;
+    padding: 8px 10px;
+    border-left: 3px solid #333;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.kingdom-info.active-turn {
+    border-left-color: #4caf50;
+    background: #16261e;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+.kingdom-info .kingdom-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #eee;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.kingdom-info .kingdom-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #bbb;
+}
+
+.kingdom-info .kingdom-stats span {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}

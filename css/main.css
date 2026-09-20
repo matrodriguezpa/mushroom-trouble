@@ -1,0 +1,13 @@
+/* Punto de entrada de estilos. El orden de los imports define la cascada. */
+
+@import url('base.css');
+@import url('start-screen.css');
+@import url('layout.css');
+@import url('header.css');
+@import url('panels.css');
+@import url('board.css');
+@import url('cards.css');
+@import url('stack-modal.css');
+@import url('hand.css');
+@import url('sidebar.css');
+@import url('footer.css');

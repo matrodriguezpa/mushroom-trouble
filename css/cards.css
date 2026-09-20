@@ -1,0 +1,64 @@
+/* Cartas en el tablero: variantes por tipo/capa y estados (atacante, vulnerable) */
+
+.card {
+    width: 100%;
+    height: 100%;
+    font-size: 9px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2px;
+    background: #90caf9;
+    color: #000;
+    border-radius: 4px;
+    font-weight: bold;
+    line-height: 1.1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.card.tierra {
+    background: linear-gradient(160deg, #c8b98a 0%, #a3906a 100%);
+}
+
+.card.aire {
+    background: linear-gradient(160deg, #b3e5fc 0%, #4fc3f7 100%);
+}
+
+.card.bonus {
+    background: linear-gradient(160deg, #ffe082 0%, #ffb300 100%);
+}
+
+.card.rey {
+    background: linear-gradient(160deg, #ffb74d 0%, #f57c00 100%);
+}
+
+.card.especial {
+    background: linear-gradient(160deg, #e1bee7 0%, #ba68c8 100%);
+}
+
+.card.soporte {
+    background: linear-gradient(160deg, #c8e6c9 0%, #81c784 100%);
+}
+
+.card.attacker {
+    outline: 2px solid #00e676;
+    box-shadow: 0 0 8px #00e676;
+}
+
+.card.vulnerable {
+    outline: 2px solid #ff1744;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        outline-color: #ff1744;
+    }
+
+    50% {
+        outline-color: #ff8a80;
+    }
+}

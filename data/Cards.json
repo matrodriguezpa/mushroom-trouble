@@ -4,7 +4,8 @@
   { "id": "arquero_1", "name": "Arquero", "type": "Tropa", "location": "earth", "attack": { "type": "1", "damage": 1 }, "defense": { "type": "none", "value": 0 }, "health": { "type": "lives", "value": 1 } },
   { "id": "caballero_1", "name": "Caballero", "type": "Tropa", "location": "earth", "attack": { "type": "2", "damage": 2 }, "defense": { "type": "self", "value": 1 }, "health": { "type": "lives", "value": 2 } },
   { "id": "halcon_1", "name": "Halcón", "type": "Tropa", "location": "air", "attack": { "type": "1", "damage": 1 }, "defense": { "type": "none", "value": 0 }, "health": { "type": "lives", "value": 1 } },
-  { "id": "bonus_espada", "name": "Espada del Poder", "type": "Bonus", "location": "none", "attack": { "type": "auto", "damage": 1 }, "defense": { "type": "none", "value": 0 }, "health": { "type": "turns", "value": 2 } },
+  { "id": "dragon_1", "name": "Dragón", "type": "Tropa", "location": "air", "attack": { "type": "2", "damage": 3 }, "defense": { "type": "self", "value": 1 }, "health": { "type": "lives", "value": 3 } },
+  { "id": "bonus_espada", "name": "Espada +1", "type": "Bonus", "location": "none", "attack": { "type": "auto", "damage": 1 }, "defense": { "type": "none", "value": 0 }, "health": { "type": "turns", "value": 2 } },
   { "id": "especial_rayo", "name": "Rayo", "type": "Especial", "location": "none", "attack": { "type": "1", "damage": 3 }, "defense": { "type": "none", "value": 0 }, "health": { "type": "attacks", "value": 1 } },
   { "id": "soporte_escudo", "name": "Escudero", "type": "Soporte", "location": "earth", "attack": { "type": "none", "damage": 0 }, "defense": { "type": "others", "value": 2 }, "health": { "type": "turns", "value": 3 } }
 ]

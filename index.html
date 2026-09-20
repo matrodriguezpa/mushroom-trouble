@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Batalla de Reinos</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/main.css">
 </head>
 <body class="show-both">
 <div id="app">
@@ -38,6 +38,7 @@
       </div>
     </div>
     <button id="start-btn" disabled>Iniciar Juego Local</button>
+    <div id="load-error" class="load-error" hidden></div>
     <div class="credits">
       <p><strong>Créditos</strong></p>
       <p>Diseño y desarrollo por <strong>Tu Nombre</strong></p>
@@ -102,6 +103,14 @@
   <div id="stack-modal-cards" style="display:flex; gap:10px;"></div>
 </div>
 
-<script src="script.js"></script>
+<script>
+  // Los módulos ES y fetch() no funcionan abriendo el archivo con doble clic (file://).
+  if (location.protocol === 'file:') {
+    var err = document.getElementById('load-error');
+    err.textContent = 'Este juego necesita un servidor local: abre la carpeta con "npx serve" o "python -m http.server" (o Live Server en VS Code) en lugar de abrir index.html directamente.';
+    err.hidden = false;
+  }
+</script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

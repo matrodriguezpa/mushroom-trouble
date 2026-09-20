@@ -1,0 +1,116 @@
+/* Mano del jugador y botón para minimizarla */
+
+#hand-wrapper {
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+#toggle-hand-btn {
+    position: absolute;
+    top: 6px;
+    right: 14px;
+    z-index: 20;
+    background: #16213e;
+    color: #eee;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: 11px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#toggle-hand-btn:hover {
+    background: #1f2d52;
+}
+
+#hand-area {
+    background: #0f3460;
+    padding: 12px 60px 12px 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    min-height: 170px;
+    width: 100%;
+    border-top: 3px solid #e94560;
+    overflow-x: auto;
+    overflow-y: hidden;
+    transition: min-height 0.25s, height 0.25s, padding 0.25s;
+}
+
+#hand-area.minimized {
+    min-height: 35px !important;
+    height: 35px;
+    padding: 4px 60px 4px 20px;
+}
+
+#hand-area.minimized .hand-card {
+    width: auto;
+    height: 27px;
+    aspect-ratio: auto;
+    padding: 4px 12px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+#hand-area.minimized .hand-card .card-stat {
+    display: none;
+}
+
+#hand-area.minimized .hand-card .card-name {
+    font-size: 11px;
+    margin: 0;
+}
+
+#hand-area.minimized .hand-card:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hand-card {
+    width: 100px;
+    aspect-ratio: 6/9;
+    flex-shrink: 0;
+    background: linear-gradient(160deg, #90caf9 0%, #42a5f5 100%);
+    color: #000;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 10px;
+    text-align: center;
+    user-select: none;
+}
+
+.hand-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.hand-card:active {
+    cursor: grabbing;
+}
+
+.hand-card.dragging {
+    opacity: 0.4;
+}
+
+.hand-card .card-name {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.hand-card .card-stat {
+    font-size: 9px;
+    color: #333;
+}

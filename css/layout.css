@@ -1,0 +1,40 @@
+/* Estructura de la vista de juego: contenedor principal y zona central */
+
+#game-view {
+    flex-grow: 1;
+    display: none;
+    min-height: 0;
+}
+
+#game-view.active {
+    display: flex;
+}
+
+#main-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+}
+
+#game-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 15px;
+    overflow: auto;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 0;
+}
+
+.center-panel {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 10px 0;
+}
