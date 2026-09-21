@@ -34,6 +34,7 @@ La rareza no representa directamente el poder de una carta.
 
 Representa principalmente su **especialización, complejidad y singularidad mecánica**.
 
+* Central
 * Común
 * Raro
 * Épico
@@ -189,8 +190,8 @@ El valor inicial puede representarse así:
 | Combinación                        | Ataque |
 | ---------------------------------- | -----: |
 | Varios objetivos + distancia       |      3 |
-| Un objetivo + distancia            |      2 |
-| Varios objetivos + cuerpo a cuerpo |      1 |
+| Varios objetivos + cuerpo a cuerpo |      2 |
+| Un objetivo + distancia            |      1 |
 | Un objetivo + cuerpo a cuerpo      |      0 |
 
 La puntuación representa la **capacidad ofensiva potencial**, no necesariamente el daño exacto.
