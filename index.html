@@ -9,41 +9,57 @@
 <div id="app">
 
   <div id="start-screen">
-    <h1>Batalla de Reinos</h1>
-    <div class="subtitle">Juego de cartas estratégico</div>
+    <div id="menu-stage">
 
-    <details class="mode-list" id="mode-list">
-      <summary id="mode-summary">Modo de Juego</summary>
-
-      <div class="mode-section-label">Modo</div>
-      <div class="mode-option" data-mode="ffa">Free For All</div>
-      <div class="mode-option locked" data-mode="race">Race <span class="lock-icon">🔒</span></div>
-      <div class="mode-option locked" data-mode="rush">Rush <span class="lock-icon">🔒</span></div>
-      <div class="mode-option locked" data-mode="2v2">2 vs 2 <span class="lock-icon">🔒</span></div>
-      <div class="mode-option locked" data-mode="tournament">Tournament <span class="lock-icon">🔒</span></div>
-
-      <div class="mode-section-label">Tamaño del Grid</div>
-      <div class="mode-option" data-grid="3x3">Grid 3 × 3 (Clásico)</div>
-      <div class="mode-option" data-grid="5x3">Grid 5 × 3 (Ancho)</div>
-    </details>
-
-    <div class="player-selector" id="player-selector">
-      <label>Cantidad de Jugadores</label>
-      <div class="player-count-buttons" id="player-count-buttons">
-        <button data-count="2" class="active">2</button>
-        <button data-count="3" disabled>3</button>
-        <button data-count="4" disabled>4</button>
-        <button data-count="5" disabled>5</button>
-        <button data-count="6" disabled>6</button>
+      <div id="home-menu">
+        <h1>Batalla de Reinos</h1>
+        <div class="subtitle">Juego de cartas estratégico</div>
+        <nav id="main-menu">
+          <button class="menu-btn" data-panel="account" disabled>Cuenta</button>
+          <button class="menu-btn" data-panel="decks" disabled>Mazos</button>
+          <button class="menu-btn" data-panel="play">Jugar</button>
+          <button class="menu-btn" data-panel="credits">Créditos</button>
+        </nav>
+        <button id="close-panel-btn" class="close-btn" hidden>Cerrar</button>
+        <div id="load-error" class="load-error" hidden></div>
       </div>
-    </div>
-    <button id="start-btn" disabled>Iniciar Juego Local</button>
-    <div id="load-error" class="load-error" hidden></div>
-    <div class="credits">
-      <p><strong>Créditos</strong></p>
-      <p>Diseño y desarrollo por <strong>Tu Nombre</strong></p>
-      <p>Inspirado en juegos de estrategia por turnos</p>
-      <p>Versión 0.1 — Prototipo</p>
+
+      <section id="menu-panel">
+        <div class="panel-content" data-panel="account"><p class="panel-soon">Próximamente</p></div>
+        <div class="panel-content" data-panel="decks"><p class="panel-soon">Próximamente</p></div>
+
+        <div class="panel-content" data-panel="play">
+          <div class="setup-grid">
+            <div class="setup-modes">
+              <div class="setup-label">Tipo de partida</div>
+              <div id="mode-list"></div>
+              <div id="mode-description"></div>
+            </div>
+            <div class="setup-options">
+              <div class="setup-label">Configuración</div>
+              <div id="mode-options"></div>
+            </div>
+            <div class="setup-deck">
+              <div class="setup-label">Mazos</div>
+              <div id="deck-list"></div>
+            </div>
+          </div>
+          <div class="setup-footer">
+            <span id="ready-hint"></span>
+            <button id="start-btn" disabled>Listo</button>
+          </div>
+        </div>
+
+        <div class="panel-content" data-panel="credits">
+          <div class="credits">
+            <p><strong>Créditos</strong></p>
+            <p>Diseño y desarrollo por <strong>Tu Nombre</strong></p>
+            <p>Inspirado en juegos de estrategia por turnos</p>
+            <p>Versión 0.1 — Prototipo</p>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 

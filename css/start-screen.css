@@ -1,199 +1,240 @@
-/* Pantalla de inicio: selector de modo, cantidad de jugadores y botón de inicio */
+/* Pantalla de inicio: menú principal a la izquierda y panel expandible a la derecha */
 
 #start-screen {
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    padding: 40px 20px;
+    padding: 30px 24px;
     background: radial-gradient(circle at 50% 30%, #1f2d52 0%, #0f0f1e 70%);
     animation: fadeIn 0.5s ease;
     overflow-y: auto;
 }
 
-#start-screen h1 {
-    font-size: 42px;
+#menu-stage {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+}
+
+/* ---------- Menú principal ---------- */
+
+#home-menu {
+    flex: 1 1 0;
+    min-width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+#home-menu h1 {
     margin: 0;
+    font-size: 42px;
     color: #e94560;
     text-shadow: 0 4px 12px rgba(233, 69, 96, 0.5);
     letter-spacing: 3px;
     text-transform: uppercase;
     text-align: center;
+    transition: font-size 0.5s ease;
 }
 
-#start-screen .subtitle {
+#home-menu .subtitle {
     font-size: 13px;
     color: #888;
-    margin-top: -14px;
+    margin-top: -10px;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
-.mode-list {
-    width: 400px;
-    max-width: 100%;
+#main-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 260px;
+    margin-top: 12px;
+}
+
+.menu-btn {
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    color: #eee;
+    background: #16213e;
+    border: 2px solid #0f3460;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.menu-btn:hover:not(:disabled) { background: #1f2d52; border-color: #4a6fa5; transform: translateX(4px); }
+.menu-btn.active { background: #e94560; border-color: #e94560; color: #fff; }
+.menu-btn:disabled { opacity: 0.35; cursor: not-allowed; color: #777; background: #0a0a14; }
+.menu-btn:focus-visible, .opt-btn:focus-visible, #start-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.close-btn {
+    width: 100%;
+    max-width: 260px;
+    padding: 10px 18px;
+    font-size: 13px;
+    color: #aaa;
+    background: transparent;
+    border: 2px solid #0f3460;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.close-btn:hover { color: #fff; border-color: #e94560; }
+.close-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.close-btn[hidden] { display: none; }
+
+/* Con un panel abierto el menú se recoge hacia la izquierda */
+#start-screen.panel-open #home-menu { align-items: flex-start; }
+#start-screen.panel-open #home-menu h1 { font-size: 22px; text-align: left; }
+#start-screen.panel-open #home-menu .subtitle { display: none; }
+
+/* ---------- Panel expandible ---------- */
+
+#menu-panel {
+    flex: 0 0 0%;
+    height: min(660px, calc(100vh - 80px));
+    overflow: hidden;
+    opacity: 0;
+    transition: flex-basis 0.5s ease, opacity 0.35s ease 0.1s;
+}
+
+#start-screen.panel-open #menu-panel { flex-basis: 78%; opacity: 1; }
+
+.panel-content {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    box-sizing: border-box;
+    height: 100%;
+    min-width: 800px; /* evita que el contenido se recoloque mientras se anima el ancho */
+    padding: 18px;
     background: #16213e;
     border: 1px solid #0f3460;
-    border-radius: 10px;
-    padding: 4px;
+    border-radius: 12px;
 }
 
-.mode-list summary {
-    cursor: pointer;
-    padding: 12px 16px;
-    font-size: 14px;
-    color: #eee;
-    text-transform: uppercase;
+.panel-content.active { display: flex; }
+.panel-soon { margin: auto; color: #888; }
+
+.setup-label {
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #999;
     letter-spacing: 1px;
-    list-style: none;
+}
+
+/* ---------- Jugar: tres columnas (modos + descripción | opciones | mazos) ---------- */
+
+.setup-grid { display: flex; gap: 14px; flex: 1; min-height: 0; }
+
+.setup-modes { flex: 0 0 220px; display: flex; flex-direction: column; gap: 12px; }
+#mode-list { flex: 1; overflow-y: auto; }
+
+.mode-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    user-select: none;
+    padding: 11px 14px;
+    margin-bottom: 4px;
+    font-size: 14px;
     font-weight: bold;
-}
-
-.mode-list summary::-webkit-details-marker {
-    display: none;
-}
-
-.mode-list summary::after {
-    content: '▼';
-    font-size: 10px;
-    transition: transform 0.2s;
-}
-
-.mode-list[open] summary::after {
-    transform: rotate(180deg);
-}
-
-.mode-list summary:hover {
-    color: #fff;
-    background: #1f2d52;
-    border-radius: 8px;
-}
-
-.mode-list summary.has-selection {
-    color: #e94560;
-}
-
-.mode-section-label {
-    font-size: 10px;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 8px 16px 4px;
-    margin-top: 4px;
-    border-top: 1px solid #0f3460;
-}
-
-.mode-section-label:first-of-type {
-    border-top: none;
-    margin-top: 0;
-}
-
-.mode-option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 11px 16px;
-    margin: 2px 4px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 13px;
     transition: background 0.15s;
 }
 
-.mode-option:hover:not(.locked) {
-    background: #1f2d52;
-}
+.mode-item:hover:not(.locked) { background: #1f2d52; }
+.mode-item.selected { background: #e94560; color: #fff; }
+.mode-item.locked { opacity: 0.5; cursor: not-allowed; color: #888; }
 
-.mode-option.selected {
-    background: #e94560;
-    color: #fff;
-    font-weight: bold;
-}
-
-.mode-option.selected::before {
-    content: '✓ ';
-}
-
-.mode-option.locked {
-    color: #555;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-.mode-option .lock-icon {
-    font-size: 12px;
-    color: #666;
-}
-
-.mode-option.selected .lock-icon {
-    color: #fff;
-}
-
-.player-selector {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    animation: fadeIn 0.3s ease;
-}
-
-.player-selector.visible {
-    display: flex;
-}
-
-.player-selector label {
-    font-size: 12px;
+#mode-description {
+    flex: 0 0 150px;
+    box-sizing: border-box;
+    padding: 12px;
+    overflow-y: auto;
+    font-size: 13px;
+    line-height: 1.5;
     color: #ccc;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.player-count-buttons {
-    display: flex;
-    gap: 8px;
-}
-
-.player-count-buttons button {
-    width: 50px;
-    height: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    background: #16213e;
-    color: #eee;
-    border: 2px solid #0f3460;
+    background: #0f1a33;
+    border: 1px solid #0f3460;
     border-radius: 8px;
-    transition: all 0.2s;
 }
 
-.player-count-buttons button:hover:not(:disabled) {
-    background: #1f2d52;
-    border-color: #4a6fa5;
+.setup-options, .setup-deck {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 14px;
+    background: #0f1a33;
+    border: 1px solid #0f3460;
+    border-radius: 8px;
 }
 
-.player-count-buttons button.active {
-    background: #e94560;
-    border-color: #e94560;
-    color: #fff;
-    box-shadow: 0 0 12px rgba(233, 69, 96, 0.6);
+.setup-options { flex: 1; }
+.setup-deck { flex: 0 0 240px; }
+#mode-options { flex: 1; overflow-y: auto; padding-right: 6px; }
+
+.option-row { margin-bottom: 14px; }
+.option-row label { display: block; margin-bottom: 6px; font-size: 13px; color: #ccc; }
+.option-buttons { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.opt-btn {
+    min-width: 44px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #eee;
+    background: #16213e;
+    border: 2px solid #0f3460;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
 }
 
-.player-count-buttons button:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    color: #555;
-    background: #0a0a14;
+.opt-btn:hover:not(:disabled) { background: #1f2d52; border-color: #4a6fa5; }
+.opt-btn.active { background: #e94560; border-color: #e94560; color: #fff; box-shadow: 0 0 10px rgba(233, 69, 96, 0.5); }
+.opt-btn:disabled { opacity: 0.3; cursor: not-allowed; color: #555; }
+
+#deck-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+
+.deck-empty {
+    margin: auto 0;
+    padding: 16px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    color: #777;
+    border: 2px dashed #0f3460;
+    border-radius: 8px;
 }
+
+.deck-item { display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 6px; cursor: pointer; }
+.deck-item:hover { background: #1f2d52; }
+.deck-thumb { width: 48px; height: 64px; border-radius: 4px; background: #16213e center / cover; border: 1px solid #0f3460; }
+
+/* ---------- Jugar: pie ---------- */
+
+.setup-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+#ready-hint { font-size: 12px; color: #999; }
 
 #start-btn {
-    padding: 16px 48px;
-    font-size: 18px;
+    padding: 14px 44px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     background: #4caf50;
@@ -206,39 +247,25 @@
     box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
 }
 
-#start-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.6);
-}
+#start-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(76, 175, 80, 0.6); }
+#start-btn:disabled { background: #333; color: #666; cursor: not-allowed; box-shadow: none; }
 
-#start-btn:disabled {
-    background: #333;
-    color: #666;
-    cursor: not-allowed;
-    box-shadow: none;
-}
+/* ---------- Créditos y errores ---------- */
 
-.credits {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 12px;
-    color: #666;
-    line-height: 1.6;
-    max-width: 400px;
-}
-
-.credits strong {
-    color: #999;
-}
+.credits { margin: auto; text-align: center; font-size: 14px; color: #888; line-height: 1.8; }
+.credits strong { color: #bbb; }
 
 .load-error {
-    max-width: 400px;
+    max-width: 260px;
     padding: 10px 14px;
-    text-align: center;
     font-size: 12px;
     line-height: 1.5;
     color: #ffb4b4;
     background: rgba(233, 69, 96, 0.12);
     border: 1px solid #e94560;
     border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #menu-panel, #home-menu h1, .menu-btn { transition: none; }
 }
