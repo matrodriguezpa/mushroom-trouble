@@ -12,9 +12,9 @@ import { showStackModal, closeStackModal } from './views/stackModalView.js';
 
 /* ================= Inicio y render ================= */
 
-export function startGame({ cardsDb, playerCount, modeName, cols, rows, settings = {} }) {
+export function startGame({ cardsDb, playerCount, modeName, cols, rows, settings = {}, players = [] }) {
     state.engine = new GameEngine({
-        cardsDb, playerCount, modeName, cols, rows, settings,
+        cardsDb, playerCount, modeName, cols, rows, settings, players,
         hooks: {
             log,
             onTurnChange: render,

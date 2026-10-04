@@ -15,7 +15,7 @@
         <h1>Batalla de Reinos</h1>
         <div class="subtitle">Juego de cartas estratégico</div>
         <nav id="main-menu">
-          <button class="menu-btn" data-panel="account" disabled>Cuenta</button>
+          <button class="menu-btn" data-panel="profile">Perfil</button>
           <button class="menu-btn" data-panel="decks" disabled>Mazos</button>
           <button class="menu-btn" data-panel="play">Jugar</button>
           <button class="menu-btn" data-panel="credits">Créditos</button>
@@ -25,18 +25,31 @@
       </div>
 
       <section id="menu-panel">
-        <div class="panel-content" data-panel="account"><p class="panel-soon">Próximamente</p></div>
+        <div class="panel-content" data-panel="profile">
+          <div class="profile-form">
+            <div class="setup-label">Perfil</div>
+            <label for="player-name">Nombre</label>
+            <input id="player-name" type="text" maxlength="20" placeholder="Jugador" autocomplete="off">
+            <p class="profile-hint">Es solo el nombre con el que aparecerás en la partida; no es un identificador y puede repetirse.</p>
+          </div>
+        </div>
         <div class="panel-content" data-panel="decks"><p class="panel-soon">Próximamente</p></div>
 
         <div class="panel-content" data-panel="play">
           <div class="setup-grid">
             <div class="setup-modes">
+              <div class="setup-label">Juego</div>
+              <div id="game-type" class="segmented">
+                <button class="type-btn active" data-type="local">Local</button>
+                <button class="type-btn" data-type="online">Online</button>
+              </div>
               <div class="setup-label">Tipo de partida</div>
               <div id="mode-list"></div>
               <div id="mode-description"></div>
             </div>
             <div class="setup-options">
               <div class="setup-label">Configuración</div>
+              <div id="player-section" class="player-section" hidden></div>
               <div id="mode-options"></div>
             </div>
             <div class="setup-deck">

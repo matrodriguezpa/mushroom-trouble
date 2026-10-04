@@ -179,9 +179,10 @@
     border-radius: 8px;
 }
 
-.setup-options { flex: 1; }
+.setup-options { flex: 1; overflow-y: auto; }
+.setup-options > * { flex-shrink: 0; }
 .setup-deck { flex: 0 0 240px; }
-#mode-options { flex: 1; overflow-y: auto; padding-right: 6px; }
+#mode-options { padding-right: 6px; }
 
 .option-row { margin-bottom: 14px; }
 .option-row label { display: block; margin-bottom: 6px; font-size: 13px; color: #ccc; }
@@ -249,6 +250,109 @@
 
 #start-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(76, 175, 80, 0.6); }
 #start-btn:disabled { background: #333; color: #666; cursor: not-allowed; box-shadow: none; }
+
+/* ---------- Jugar: local / online ---------- */
+
+.setup-modes .setup-label { margin-bottom: 0; }
+
+.segmented { display: flex; border: 2px solid #0f3460; border-radius: 8px; overflow: hidden; }
+
+.type-btn {
+    flex: 1;
+    padding: 9px 0;
+    font-size: 13px;
+    font-weight: bold;
+    color: #bbb;
+    background: #0f1a33;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.type-btn:hover:not(.active) { background: #1f2d52; }
+.type-btn.active { background: #e94560; color: #fff; }
+.type-btn:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+
+/* ---------- Jugar: sección de jugadores y bots ---------- */
+
+.player-section { margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid #0f3460; }
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #eee;
+}
+
+.section-title span { font-weight: normal; color: #888; }
+
+.roster { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+
+.roster-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    background: #16213e;
+    border: 1px solid #0f3460;
+    border-radius: 6px;
+}
+
+.roster-tag { flex: 0 0 64px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+.roster-tag.bot { color: #4a9fe0; }
+.roster-row.creator .roster-tag { color: #e94560; }
+
+.roster-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; color: #eee; }
+
+.roster-input {
+    flex: 1;
+    min-width: 0;
+    padding: 6px 8px;
+    font-size: 13px;
+    color: #eee;
+    background: #0f1a33;
+    border: 1px solid #0f3460;
+    border-radius: 4px;
+}
+
+.roster-input:focus { outline: none; border-color: #e94560; }
+
+.rm-btn, .add-btn {
+    font-weight: bold;
+    color: #eee;
+    background: #0f1a33;
+    border: 2px solid #0f3460;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.rm-btn { width: 28px; height: 28px; padding: 0; font-size: 16px; line-height: 1; }
+.add-btn { padding: 8px 14px; font-size: 13px; }
+.roster-actions { display: flex; gap: 8px; }
+
+.rm-btn:hover:not(:disabled), .add-btn:hover:not(:disabled) { background: #1f2d52; border-color: #4a6fa5; }
+.rm-btn:disabled, .add-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.rm-btn:focus-visible, .add-btn:focus-visible, .roster-input:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* ---------- Perfil ---------- */
+
+.profile-form { display: flex; flex-direction: column; gap: 8px; max-width: 360px; }
+.profile-form label { font-size: 13px; color: #ccc; }
+
+#player-name {
+    padding: 11px 14px;
+    font-size: 15px;
+    color: #eee;
+    background: #0f1a33;
+    border: 2px solid #0f3460;
+    border-radius: 6px;
+}
+
+#player-name:focus { outline: none; border-color: #e94560; }
+.profile-hint { margin: 0; font-size: 12px; line-height: 1.5; color: #777; }
 
 /* ---------- Créditos y errores ---------- */
 

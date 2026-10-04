@@ -11,6 +11,19 @@ export const GRID_LABELS = {
     '5x3': 'Grid 5×3',
 };
 
+// Regla: máximo de reinos en una partida (jugadores humanos + bots). Siempre hay al menos
+// un humano (el creador de la partida) y un mínimo de 2 reinos.
+export const MAX_KINGDOMS = 6;
+
+// Capacidad actual del motor (provisional): subir estos valores cuando el motor soporte más reinos y bots.
+export const ENGINE_SUPPORT = { maxKingdoms: 2, bots: false };
+
+// Tipos de juego. `playable`: el motor ya puede arrancar una partida de este tipo.
+export const GAME_TYPES = {
+    local:  { label: 'Local',  playable: true },
+    online: { label: 'Online', playable: false }, // TODO: activar cuando exista el modo online
+};
+
 const range = (from, to) => Array.from({ length: to - from + 1 }, (_, i) => from + i);
 const numbers = (list, disabledFrom = Infinity) =>
     list.map(v => ({ value: v, label: String(v), disabled: v >= disabledFrom }));
@@ -18,7 +31,12 @@ const numbers = (list, disabledFrom = Infinity) =>
 // Definición de cada opción configurable. `disabled` marca valores que el motor aún no soporta.
 // Los valores por defecto son provisionales: ajústalos a las reglas reales del juego.
 export const OPTION_DEFS = {
-    playerCount:     { label: 'Cantidad de jugadores',     default: 2, choices: numbers(range(2, 6), 3) },
+    // humanCount y botCount solo se usan en juego online. En local los jugadores y bots son una lista.
+    // `isDisabled(valor, valoresActuales)` bloquea opciones que dependen de otras.
+    humanCount:      { label: 'Cantidad de jugadores',     default: 2, choices: numbers(range(1, 6)),
+                       isDisabled: (v, vals) => v + vals.botCount > MAX_KINGDOMS },
+    botCount:        { label: 'Cantidad de bots',          default: 0, choices: numbers(range(0, 5)),
+                       isDisabled: (v, vals) => vals.humanCount + v > MAX_KINGDOMS || (v === 0 && vals.humanCount < 2) },
     teamCount:       { label: 'Cantidad de equipos',       default: 2, choices: numbers(range(2, 4)) },
     teamSize:        { label: 'Jugadores por equipo',      default: 2, choices: numbers(range(2, 3)) },
     kingLives:       { label: 'Máximo de vidas de rey',    default: 3, choices: numbers(range(1, 5)) },
@@ -35,7 +53,8 @@ export const MODES = {
         label: 'Todos contra todos',
         description: 'Todos los jugadores se enfrentan entre sí; gana el último rey en pie.',
         playable: true,
-        options: ['playerCount', 'kingLives', 'kingDamageLimit', 'gridSize', 'handLimit', 'benchLimit'],
+        playerSetup: true, // usa la sección de jugadores y bots (local: lista con +/−; online: botones)
+        options: ['kingLives', 'kingDamageLimit', 'gridSize', 'handLimit', 'benchLimit'],
     },
     teams: {
         label: 'Equipos',
